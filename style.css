@@ -1,20 +1,19 @@
 :root {
-    /* Official Brand Colors - Extracted from Logo */
-    --clr-navy: #121B2D;
+    /* Premium Brand Palette */
+    --clr-navy: #0B0F19; /* Deeper, richer navy */
+    --clr-gold: #C5A059; /* Sophisticated muted gold */
     --clr-white: #FFFFFF;
-    --clr-off-white: #F8F9FA;
-    --clr-gold: #D4AF37; /* Premium Gold Accent */
+    --clr-off-white: #F9FAFB;
     --clr-glass: rgba(255, 255, 255, 0.05);
-    --clr-glass-dark: rgba(18, 27, 45, 0.95);
+    --clr-glass-dark: rgba(11, 15, 25, 0.85);
     
     /* Typography */
     --ff-heading: 'Playfair Display', serif;
     --ff-body: 'Inter', sans-serif;
     
-    /* Spacing & Transitions */
-    --section-padding: 120px 8%;
-    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.3s ease;
+    /* Animation Tokens */
+    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -109,23 +108,24 @@ img {
 
 /* --- Section Titles --- */
 .section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     color: var(--clr-navy);
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    font-weight: 800;
 }
 
 .section-title::after {
-    content: 'Brreeze';
+    content: 'BRREEZE';
     display: block;
     font-family: var(--ff-body);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: var(--clr-gold);
-    margin-top: 10px;
-    font-weight: 600;
+    margin-top: 15px;
+    font-weight: 700;
 }
 
 /* --- Container --- */
@@ -657,7 +657,7 @@ img {
 /* --- Entrance Reveals --- */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
     transition: var(--transition-smooth);
 }
 
@@ -668,7 +668,7 @@ img {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-60px);
     transition: var(--transition-smooth);
 }
 
@@ -679,13 +679,56 @@ img {
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(60px);
     transition: var(--transition-smooth);
 }
 
 .reveal-right.active {
     opacity: 1;
     transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: var(--transition-smooth);
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: var(--ff-body);
+}
+
+.scroll-indicator i {
+    font-size: 1.2rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+    40% {transform: translateX(-50%) translateY(-10px);}
+    60% {transform: translateX(-50%) translateY(-5px);}
 }
 
 /* --- About Preview (Home) --- */
